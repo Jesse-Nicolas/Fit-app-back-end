@@ -10,7 +10,7 @@ const index = async (req, res) => {
 
 const show = async (req,res) => {
   try {
-    // this is where we will populate 
+    console.log('show route')
   } catch (error) {
     res.status(500).json(error)
   }
