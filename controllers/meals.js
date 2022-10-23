@@ -8,6 +8,15 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req,res) => {
+  try {
+    //this is where we will populate//
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   index,
+  show,
 }
