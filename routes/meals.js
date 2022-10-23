@@ -6,6 +6,7 @@ const router = Router()
 
 // Public Routes
 router.get('/', mealsCtrl.index)
+router.get('/:id', mealsCtrl.show)
 
 
 
