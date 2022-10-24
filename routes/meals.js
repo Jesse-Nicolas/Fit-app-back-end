@@ -5,8 +5,10 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 // Public Routes
-router.get('/', mealsCtrl.index)
-router.get('/:id', mealsCtrl.show)
+// router.get('/', mealsCtrl.index)
+// router.get('/:id', mealsCtrl.show)
+router.get('/getMealDetails/:mealId', mealsCtrl.getMealDetails)
+// router.post('/getMealDetails', mealsCtrl.getMealDetails)
 router.post('/search', mealsCtrl.search)
 
 // Protected Routes
