@@ -8,6 +8,6 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-
+router.post('/', checkAuth, exercisesCtrl.create)
 
 export { router }
