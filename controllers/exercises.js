@@ -1,5 +1,15 @@
 import { Exercise } from '../models/exercise.js'
 
+const index = async (req, res) => {
+  try {
+    const exercises = await Exercise.find({})
+    res.status(201).json(exercises)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 const create = async (req, res) => {
   try {
     req.body.author = req.user.profile
@@ -13,5 +23,6 @@ const create = async (req, res) => {
 
 export {
   create,
-
+  index,
+  
 }
