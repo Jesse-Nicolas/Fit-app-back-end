@@ -5,10 +5,23 @@ const Schema = mongoose.Schema
 
 const exerciseSchema = new Schema(
   {
-    name: String,
-    reps: Number,
-    muscle: String,
-    equipment: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    reps: {
+      type: Number,
+      required: true,
+    },
+    muscle: {
+      type: String,
+      required: true,
+      enum: ['upper back', 'lower back', 'chest', 'abs', 'arms', 'legs']
+    },
+    equipment: {
+      type: String,
+      required: true,
+    },
     author: { type: Schema.Types.ObjectId, ref: 'Profile'},
   }
 )
