@@ -20,7 +20,6 @@ const exerciseSchema = new Schema(
     },
     equipment: {
       type: String,
-      required: true,
     },
     author: { type: Schema.Types.ObjectId, ref: 'Profile'},
   }
