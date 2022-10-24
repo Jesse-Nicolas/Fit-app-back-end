@@ -7,6 +7,10 @@ const router = Router()
 // Public Routes
 router.get('/', mealsCtrl.index)
 router.get('/:id', mealsCtrl.show)
+router.post('/search', mealsCtrl.search)
+
+// Protected Routes
+router.use(decodeUserFromToken)
 
 
 

@@ -1,4 +1,5 @@
 import { Meal } from '../models/meal.js'
+import axios from 'axios'
 
 const index = async (req, res) => {
   try {
@@ -16,7 +17,24 @@ const show = async (req,res) => {
   }
 }
 
+// const search = async (req,res) => {
+//   axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${req.body.mealQuery}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}`)
+//     .then(response => {
+//       res.json(response.data.hits)
+//     })
+// }
+
+function search(req, res) {
+  // console.log(req.body.mealQuery)
+  axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${req.body.mealQuery}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}`)
+  .then(response => {
+    res.json(response.data.hits)
+    // console.log(response.data.hits)
+  })
+}
+
 export {
   index,
   show,
+  search,
 }
