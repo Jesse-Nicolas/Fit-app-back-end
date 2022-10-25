@@ -8,6 +8,7 @@ const weekSchema = new Schema({
 
 const goalsSchema = new Schema({
   content: String,
+  date: Date,
 })
 
 const profileSchema = new Schema({
