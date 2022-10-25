@@ -1,5 +1,6 @@
 import { Profile } from '../models/profile.js'
 import { v2 as cloudinary } from 'cloudinary'
+import { Day }  from '../models/day.js'
 
 function index(req, res) {
   Profile.find({})
@@ -31,8 +32,12 @@ function addPhoto(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
+  .populate('days')
   .then(profile => {
-    res.json(profile)
+    Day.find({_id: {$nin: profile.days}})
+    .then (() => {
+      res.json(profile)
+    })
   })
 }
 
