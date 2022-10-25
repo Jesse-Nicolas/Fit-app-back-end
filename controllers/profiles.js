@@ -29,4 +29,11 @@ function addPhoto(req, res) {
   })
 }
 
-export { index, addPhoto }
+function show(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    res.json(profile)
+  })
+}
+
+export { index, addPhoto, show, }
