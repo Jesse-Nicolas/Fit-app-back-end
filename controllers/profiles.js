@@ -29,7 +29,6 @@ function addPhoto(req, res) {
   })
 }
 
-
 function show(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -38,4 +37,3 @@ function show(req, res) {
 }
 
 export { index, addPhoto, show, }
-
