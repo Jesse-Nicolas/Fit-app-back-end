@@ -3,6 +3,7 @@ import { Exercise } from '../models/exercise.js'
 const index = async (req, res) => {
   try {
     const exercises = await Exercise.find({})
+    .sort({ createdAt: 'desc' })
     res.status(201).json(exercises)
   } catch (error) {
     console.log(error)
