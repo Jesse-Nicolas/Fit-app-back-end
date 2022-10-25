@@ -37,4 +37,17 @@ function show(req, res) {
   })
 }
 
-export { index, addPhoto, show, }
+function createGoal(req, res) {
+  console.log(req.body)
+  Profile.findById(req.params.id)
+  .then(profile => {
+    profile.goals.push(req.body)
+    profile.save()
+  })
+  .catch(err => {
+    console.log(err)
+    res.status.json(err)
+  })
+}
+
+export { index, addPhoto, show, createGoal }
