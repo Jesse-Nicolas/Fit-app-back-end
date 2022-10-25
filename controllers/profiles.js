@@ -9,6 +9,15 @@ function index(req, res) {
     res.status(500).json(err)
   })
 }
+const show = async (req, res) => {
+  try {
+    const profile = await Profile.findById(req.params.id)
+    res.status(200).json(blog)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 
 function addPhoto(req, res) {
   const imageFile = req.files.photo.path
@@ -29,4 +38,4 @@ function addPhoto(req, res) {
   })
 }
 
-export { index, addPhoto }
+export { index, addPhoto, show }
