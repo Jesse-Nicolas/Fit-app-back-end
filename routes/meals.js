@@ -13,6 +13,8 @@ router.post('/search', mealsCtrl.search)
 // Protected Routes
 router.use(decodeUserFromToken)
 
+router.post('/', checkAuth, mealsCtrl.createMeal)
+
 
 
 export { router }

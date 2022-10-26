@@ -41,9 +41,19 @@ function getMealDetails(req, res) {
   })
 }
 
+const createMeal = async (req, res) => {
+  try {
+    const meal = await Meal.create(req.body.recipe)
+    console.log('REQ.BODY', req.body.recipe)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   // index,
   // show,
   search,
-  getMealDetails
+  getMealDetails,
+  createMeal
 }
