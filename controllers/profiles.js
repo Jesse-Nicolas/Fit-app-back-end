@@ -99,7 +99,7 @@ function updateGoal(req, res) {
 function addMeal(req,res) {
   Profile.findById(req.params.id)
   .then(profile => {
-    profile.meals.push('6359b15721bdb9e2cc281290')
+    profile.meals.push(req.body.id)
     profile.save()
     .then(() => {
       res.json(profile)
