@@ -53,10 +53,11 @@ function createGoal(req, res) {
   })
 }
 
-function addExercise(rew,res) {
+function addExercise(req,res) {
   Profile.findById(req.params.id)
   .then(profile => {
-    profile.exercises.push(req.body.exerciseId)
+    console.log(req.body.id, "BODY")
+    profile.exercises.push(req.body.id)
     profile.save()
     .then(() => {
       res.json(profile)
@@ -64,7 +65,6 @@ function addExercise(rew,res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, addExercise }
 function deleteGoal(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -78,4 +78,4 @@ function deleteGoal(req, res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, deleteGoal, }
+export { index, addPhoto, show, createGoal, deleteGoal, addExercise }
