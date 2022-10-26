@@ -107,4 +107,17 @@ function addMeal(req,res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, addExercise, addMeal }
+function deleteExercise(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    profile.exercises.remove({_id: req.params.exerciseId})
+    profile.save()
+    res.status(200).json(profile)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, addExercise, deleteExercise, addMeal }
