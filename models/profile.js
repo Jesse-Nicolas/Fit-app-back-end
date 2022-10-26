@@ -7,10 +7,15 @@ const goalsSchema = new Schema({
   date: Date,
 })
 
+const likedMealSchema = new Schema({
+  meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}]
+})
+
 const profileSchema = new Schema({
   name: String,
   goals: [goalsSchema],
-  days: [{type: Schema.Types.ObjectId, ref: 'Day'}],
+  meals: [likedMealSchema],
+  exercises: [{type: Schema.Types.ObjectId, ref: 'Exercise'}]
 },{
   timestamps: true,
 })
