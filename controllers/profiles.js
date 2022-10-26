@@ -43,6 +43,7 @@ function show(req, res) {
 }
 
 function createGoal(req, res) {
+  console.log(req.body, 'AAAAHHHHHHHH')
   Profile.findById(req.params.id)
   .then(profile => {
     profile.goals.push(req.body)
@@ -85,6 +86,7 @@ function updateGoal(req, res) {
   .then(profile => {
     const goal = profile.goals.id(req.params.goalId)
     goal.content = req.body.content
+    goal.date = req.body.date
     profile.save()
     .then(() => {
       res.status(200).json(profile)
