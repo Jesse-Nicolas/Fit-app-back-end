@@ -46,7 +46,7 @@ const update = async (req, res) => {
   }
 }
 
-const deleteBlog = async (req, res) => {
+const deleteExercise = async (req, res) => {
   try {
     const exercise = await Exercise.findByIdAndDelete(req.params.id)
     res.status(200).json(exercise)
@@ -61,5 +61,5 @@ export {
   index,
   show,
   update,
-  deleteBlog as delete,
+  deleteExercise as delete,
 }

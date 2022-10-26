@@ -14,7 +14,7 @@ const likedMealSchema = new Schema({
 const profileSchema = new Schema({
   name: String,
   goals: [goalsSchema],
-  meals: [likedMealSchema],
+  meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}],
   exercises: [{type: Schema.Types.ObjectId, ref: 'Exercise'}]
 },{
   timestamps: true,
