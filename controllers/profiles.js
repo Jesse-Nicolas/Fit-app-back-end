@@ -33,6 +33,7 @@ function addPhoto(req, res) {
 function show(req, res) {
   Profile.findById(req.params.id)
   .populate('exercises')
+  .populate('meals')
   .then(profile => {
     Exercise.find({_id: {$nin: profile.exercises}})
     .then (() => {
@@ -95,4 +96,15 @@ function updateGoal(req, res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, addExercise }
+function addMeal(req,res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    profile.meals.push('6359b15721bdb9e2cc281290')
+    profile.save()
+    .then(() => {
+      res.json(profile)
+    })
+  })
+}
+
+export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, addExercise, addMeal }
