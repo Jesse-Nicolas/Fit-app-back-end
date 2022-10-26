@@ -3,7 +3,9 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const goalsSchema = new Schema({
-  content: String,
+  content: {
+    type: String,
+    required: true},
   date: Date,
 })
 
