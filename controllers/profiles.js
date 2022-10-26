@@ -1,6 +1,6 @@
 import { Profile } from '../models/profile.js'
 import { v2 as cloudinary } from 'cloudinary'
-import { Day }  from '../models/day.js'
+import { Exercise }  from '../models/exercise.js'
 
 function index(req, res) {
   Profile.find({})
@@ -32,9 +32,9 @@ function addPhoto(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-  .populate('days')
+  .populate('exercises')
   .then(profile => {
-    Day.find({_id: {$nin: profile.days}})
+    Exercise.find({_id: {$nin: profile.exercises}})
     .then (() => {
       res.json(profile)
     })
@@ -53,6 +53,18 @@ function createGoal(req, res) {
   })
 }
 
+function addExercise(req,res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    console.log(req.body.id, "BODY")
+    profile.exercises.push(req.body.id)
+    profile.save()
+    .then(() => {
+      res.json(profile)
+    })
+  })
+}
+
 function deleteGoal(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -65,6 +77,7 @@ function deleteGoal(req, res) {
     res.status(500).json(err)
   })
 }
+
 
 function updateGoal(req, res) {
   Profile.findById(req.params.id)
@@ -82,4 +95,4 @@ function updateGoal(req, res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, }
+export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, addExercise }

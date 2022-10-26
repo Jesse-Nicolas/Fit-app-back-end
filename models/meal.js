@@ -19,6 +19,10 @@ const mealSchema = new Schema(
     description: String,
     calories: Number,
     image: String,
+    day: {
+      type: String,
+      enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'friday', 'Saturday'],
+    },
   }
 )
 
