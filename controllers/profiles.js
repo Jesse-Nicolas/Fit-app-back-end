@@ -66,4 +66,20 @@ function deleteGoal(req, res) {
   })
 }
 
-export { index, addPhoto, show, createGoal, deleteGoal, }
+function updateGoal(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    const goal = profile.goals.id(req.params.goalId)
+    goal.content = req.body.content
+    profile.save()
+    .then(() => {
+      res.status(200).json(profile)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+export { index, addPhoto, show, createGoal, deleteGoal, updateGoal, }
