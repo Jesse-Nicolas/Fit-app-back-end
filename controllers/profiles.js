@@ -36,11 +36,12 @@ function show(req, res) {
   .populate('meals')
   .then(profile => {
     Exercise.find({_id: {$nin: profile.exercises}})
-    .then (() => {
-      res.json(profile)
+    .then (exerciseNotInProfile => {
+      res.json({profile, exerciseNotInProfile})
     })
   })
 }
+
 
 function createGoal(req, res) {
   Profile.findById(req.params.id)
@@ -112,7 +113,9 @@ function deleteExercise(req, res) {
   .then(profile => {
     profile.exercises.remove({_id: req.params.exerciseId})
     profile.save()
-    res.status(200).json(profile)
+    .then(() =>{
+      res.status(200).json(profile)
+    })
   })
   .catch(err => {
     console.log(err)
