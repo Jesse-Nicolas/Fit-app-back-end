@@ -9,10 +9,6 @@ const goalsSchema = new Schema({
   date: Date,
 })
 
-const likedMealSchema = new Schema({
-  meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}]
-})
-
 const profileSchema = new Schema({
   name: String,
   goals: [goalsSchema],
