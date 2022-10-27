@@ -6,7 +6,7 @@ const goalsSchema = new Schema({
   content: {
     type: String,
     required: true},
-  date: Date,
+  date: String,
 })
 
 const likedMealSchema = new Schema({
