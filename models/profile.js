@@ -17,7 +17,8 @@ const profileSchema = new Schema({
   name: String,
   goals: [goalsSchema],
   meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}],
-  exercises: [{type: Schema.Types.ObjectId, ref: 'Exercise'}]
+  exercises: [{type: Schema.Types.ObjectId, ref: 'Exercise'}],
+  photo: String
 },{
   timestamps: true,
 })
