@@ -1,6 +1,7 @@
 import { Profile } from '../models/profile.js'
 import { v2 as cloudinary } from 'cloudinary'
 import { Exercise }  from '../models/exercise.js'
+import { Meal } from '../models/meal.js'
 
 function index(req, res) {
   Profile.find({})
@@ -37,7 +38,10 @@ function show(req, res) {
   .then(profile => {
     Exercise.find({_id: {$nin: profile.exercises}})
     .then (exerciseNotInProfile => {
-      res.json({profile, exerciseNotInProfile})
+      Meal.find({_id: {$nin: profile.meals}})
+      .then (mealNotInProfile => {
+        res.json({profile, exerciseNotInProfile, mealNotInProfile})
+      })
     })
   })
 }
@@ -128,7 +132,9 @@ function deleteMeal(req, res) {
   .then(profile => {
     profile.meals.remove({_id: req.params.mealId})
     profile.save()
-    res.status(200).json(profile)
+    .then(() =>{
+      res.status(200).json(profile)
+    })
   })
   .catch(err => {
     console.log(err)
