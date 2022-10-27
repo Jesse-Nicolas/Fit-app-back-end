@@ -43,7 +43,6 @@ function show(req, res) {
 }
 
 function createGoal(req, res) {
-  console.log(req.body, 'AAAAHHHHHHHH')
   Profile.findById(req.params.id)
   .then(profile => {
     profile.goals.push(req.body)
@@ -58,7 +57,6 @@ function createGoal(req, res) {
 function addExercise(req,res) {
   Profile.findById(req.params.id)
   .then(profile => {
-    console.log(req.body.id, "BODY")
     profile.exercises.push(req.body.id)
     profile.save()
     .then(() => {

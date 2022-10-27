@@ -21,10 +21,11 @@ const exerciseSchema = new Schema(
     equipment: {
       type: String,
     },
-    day: {
-      type: String,
-      enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'friday', 'Saturday'],
-    },
+    // ICEBOX
+    // day: {
+    //   type: String,
+    //   enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'friday', 'Saturday'],
+    // },
     author: { type: Schema.Types.ObjectId, ref: 'Profile'},
   },
   { timestamps: true }
