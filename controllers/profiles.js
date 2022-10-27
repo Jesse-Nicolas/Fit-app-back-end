@@ -52,6 +52,7 @@ function createGoal(req, res) {
   .then(profile => {
     profile.goals.push(req.body)
     profile.save()
+    res.status(200).json(profile)
   })
   .catch(err => {
     console.log(err)
