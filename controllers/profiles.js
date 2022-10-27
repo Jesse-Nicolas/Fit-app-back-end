@@ -52,7 +52,9 @@ function createGoal(req, res) {
   .then(profile => {
     profile.goals.push(req.body)
     profile.save()
-    res.status(200).json(profile)
+    .then(() => {
+      res.status(200).json(profile)
+    })
   })
   .catch(err => {
     console.log(err)
@@ -76,7 +78,9 @@ function deleteGoal(req, res) {
   .then(profile => {
     profile.goals.remove({_id: req.params.goalId})
     profile.save()
-    res.status(200).json(profile)
+    .then(() => {
+      res.status(200).json(profile)
+    })
   })
   .catch(err => {
     console.log(err)
