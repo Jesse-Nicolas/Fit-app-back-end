@@ -19,5 +19,6 @@ router.delete('/:id/goals/:goalId', checkAuth, profilesCtrl.deleteGoal)
 router.post('/:id/meals', profilesCtrl.addMeal)
 
 router.delete('/:id/exercises/:exerciseId', checkAuth, profilesCtrl.deleteExercise)
+router.delete('/:id/meals/:mealId', checkAuth, profilesCtrl.deleteMeal)
 
 export { router }
