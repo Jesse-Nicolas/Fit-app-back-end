@@ -50,10 +50,20 @@ const createMeal = async (req, res) => {
   }
 }
 
+const index = async (req, res) => {
+  try {
+    const meal = await Meal.find({})
+    res.status(201).json(meal)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
+
 export {
-  // index,
-  // show,
   search,
   getMealDetails,
-  createMeal
+  createMeal,
+  index,
 }
